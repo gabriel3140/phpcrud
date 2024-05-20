@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar navbar-dark bg-dark">
-<a class="navbar-brand" href="#">Welcome, <?php echo $_SESSION['username'];?>! </a>
+<a class="navbar-brand" href="#">Welcome, <?php echo $_SESSION['user'];?>! </a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
 <span class="navbar-toggler-icon"></span>
 </button>
@@ -10,7 +10,7 @@
 <a class="nav-link" href="index.php">List<span class="sr-only">(current)</span></a>
 </li>
 <li class="nav-item">
-<a class="nav-link" href="multisave.php">Register</a>
+<a class="nav-link" href="Register.php">Register</a>
 </li>
 <li class="nav-item">
 <a class="nav-link" href="logout.php">Logout</a>

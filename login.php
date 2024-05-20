@@ -3,25 +3,22 @@
 require_once('classes/database.php');
 $con = new database();
 session_start();
-if (($_SESSION['username'])) {
-  header('location: index.php');
+if (isset($_SESSION['user'])) {
+  header('location:index.php');
 }
 
-if (isset($_POST['login'])){
-  $username = $_POST['user_name'];
-  $password = $_POST['user_pass'];
-  $result = $con->check ($username, $password);
-  if ($result){
-    if($result['user']==$_POST['user_name'] && $result['pass']== $_POST['user_pass']) {
-      $_SESSION['username'] = $result['user'];
+if (isset($_POST['login'])) {
+  $username = $_POST['user'];
+  $password = $_POST['pass'];
+  $result = $con->check($username, $password);
+ 
+  if ($result) {
+      $_SESSION['user'] = $result['user'];
       header('location:index.php');
-    } else{
-      echo 'error';
-    }
-    }else {
-      echo 'error';
-    }
+  } else {
+      $error = "Incorrect username or password. Please try again.";
   }
+}
  
 ?>
 <!DOCTYPE html>
@@ -51,11 +48,11 @@ if (isset($_POST['login'])){
   <form method="post">
     <div class="form-group">
       <label for="username">Username:</label>
-      <input type="text" class="form-control" name="user_name" placeholder="Enter username ">
+      <input type="text" class="form-control" name="user" placeholder="Enter username ">
     </div>
     <div class="form-group">
       <label for="password">Password:</label>
-      <input type="password" class="form-control"  name="user_pass" placeholder="Enter password">
+      <input type="password" class="form-control"  name="pass" placeholder="Enter password">
     </div>
     <div class="container">
       <div class="row gx-1">

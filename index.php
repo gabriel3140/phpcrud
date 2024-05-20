@@ -4,7 +4,7 @@ require_once('classes/database.php');
  
 $con = new database();
 session_start();
-if (empty($_SESSION['username'])){
+if (empty($_SESSION['user'])){
   header('location: login.php');
 } 
  
@@ -41,6 +41,7 @@ if (empty($_SESSION['username'])){
       <thead>
         <tr>
           <th>#</th>
+          <th>Profile</th>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Birthday</th>
@@ -62,6 +63,13 @@ if (empty($_SESSION['username'])){
  
         <tr>
           <td> <?php echo $counter++;?></td>
+          <td>
+        <?php if (!empty($rows['user_profile_picture'])): ?>
+          <img src="<?php echo htmlspecialchars($rows['user_profile_picture']); ?>" alt="Profile Picture" style="width: 50px; height: 50px; border-radius: 50%;">
+        <?php else: ?>
+          <img src="path/to/default/profile/pic.jpg" alt="Default Profile Picture" style="width: 50px; height: 50px; border-radius: 50%;">
+        <?php endif; ?>
+      </td>
           <td><?php echo $rows['FirstName']; ?></td>
           <td><?php echo $rows['LastName']; ?></td>
           <td><?php echo $rows['Birthday']; ?></td>

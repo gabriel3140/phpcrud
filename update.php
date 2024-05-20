@@ -26,8 +26,11 @@ if (isset($_POST['update'])) {
   $id = $_POST['id'];
 
 if ($password == $confirm) {
+  echo "Im here";
   if($con->updateUser($id, $firstname, $lastname, $birthday, $sex, $username, $password)){
-    if($con->updateUserAddress($id, $street, $barangay, $city, $province)){
+    echo "Done";
+    if($con->updateUserAddress($street, $barangay, $city, $province,$id)){
+      echo "Done2";
       header('location:index.php');
       exit;
     } else {

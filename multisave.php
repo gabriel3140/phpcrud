@@ -20,7 +20,7 @@ if (isset($_POST['multisave'])) {
    
     if ($password == $confirm) {
         // Passwords match, proceed with signup
-        $user_id = $con->signupUser($firstname, $lastname, $birthday, $sex, $username, $password); // Insert into users table and get user_id
+        $user_id = $con->signupUser($firstname, $lastname, $birthday, $sex, $username, $password, $confirm); // Insert into users table and get user_id
         if ($user_id) {
             // Signup successful, insert address into users_address table
             if ($con->insertAddress($user_id, $street, $barangay, $city, $province)) {
@@ -106,7 +106,7 @@ if (isset($_POST['multisave'])) {
         </div>
         <div class="form-group">
           <label for="Confirm Password">Confirm Password:</label>
-          <input type="confirm password" class="form-control" name="confirm" placeholder="Enter Confirm password">
+          <input type="confirm password" class="form-control" name="c_pass" placeholder="Enter Confirm password">
         </div>
       </div>
     </div>
