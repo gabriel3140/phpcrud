@@ -3,9 +3,9 @@
 require_once('classes/database.php');
 $con = new database();
 session_start();
-if (isset($_SESSION['user'])) {
-  header('location:index.php');
-}
+// if (isset($_SESSION['user'])) {
+//   header('location:index.php');
+// }
 
 if (isset($_POST['login'])) {
   $username = $_POST['user'];
@@ -14,10 +14,17 @@ if (isset($_POST['login'])) {
  
   if ($result) {
       $_SESSION['user'] = $result['user'];
+      $_SESSION['user_id'] = $result['user_id'];
+      $_SESSION['profile_picture'] = $result['user_profile_picture'];
+      $_SESSION['account_type'] = $result['account_type'];
+      if ($result['account_type'] == '0') {
       header('location:index.php');
-  } else {
+  } else if ($result['account_type']==1){
+    header('location:user_account.php');
       $error = "Incorrect username or password. Please try again.";
   }
+  exit();
+}
 }
  
 ?>
@@ -57,7 +64,7 @@ if (isset($_POST['login'])) {
     <div class="container">
       <div class="row gx-1">
         <div class="col"><input type="submit" value="Login" name="login" class="btn btn-primary btn-block"></div>
-        <div class="col"><a type="submit" class="btn btn-danger btn-block"href="signup.php">Sign Up</a></div>
+        <div class="col"><a type="submit" class="btn btn-danger btn-block"href="register.php">Sign Up</a></div>
       </div>
  
 <!-- Bootstrap JS and dependencies -->

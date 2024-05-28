@@ -4,9 +4,9 @@ require_once('classes/database.php');
  
 $con = new database();
 session_start();
-if (empty($_SESSION['user'])){
-  header('location: login.php');
-} 
+// if (isset($_SESSION['user']) || $_SESSION['account_type'] !=0){
+//   header('location: login.php');
+// } 
  
  if(isset($_POST['delete'])) {
     $id = $_POST['id'];
@@ -29,7 +29,7 @@ if (empty($_SESSION['user'])){
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <!-- For Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-<link rel="stylesheet" href="./includes/style.css">
+<link rel="stylesheet" href="./include/style.css">
 </head>
 <body>
   <?php include('include/navbar.php');?>
