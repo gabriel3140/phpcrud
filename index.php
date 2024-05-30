@@ -77,19 +77,23 @@ session_start();
           <td><?php echo $rows['user']; ?></td>
           <td><?php echo $rows['Address']; ?></td>
           <td>
-        <!-- Edit button -->
-        <form action="update.php" method="post"style="display: inline;">
-            <input type="hidden" name="id" value="<?php echo $rows['user_id']; ?>">
-            <button type="submit" class="btn btn-primary btn-sm"> Edit </button>
-        </form>
-        <!-- Delete button -->
-        <form method="POST" style="display: inline;">
-            <input type="hidden" name="id" value="<?php echo $rows['user_id']; ?>">
-            <input type="submit" name="delete" class="btn btn-danger btn-sm" value="Delete" onclick="return confirm('Are you sure you want to delete this user?')">
-        </form>
-          </td>
+
+          <div class="btn-group" role="group">
+          <form action="update.php" method="post" class="d-inline">
+                                    <input type="hidden" name="id" value="<?php echo $rows['user_id']; ?>">
+                                    <button type="submit" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                </form>
+                                <form method="POST" class="d-inline">
+                                    <input type="hidden" name="id" value="<?php echo $rows['user_id']; ?>">
+                                    <button type="submit" name="delete" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this user?')">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+        </div>
+        </td>
         </tr>
- 
         <?php
       }
       ?>

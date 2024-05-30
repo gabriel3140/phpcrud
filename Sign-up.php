@@ -14,7 +14,7 @@ if (isset($_POST['SignUp'])){
   $confirm = $_POST['pass2'];
  
   if ($password == $confirm){
-    if ($con->signupUser($firstname, $lastname, $birthday, $sex, $username, $password)) {
+    if ($con->signupUser($FirstName, $LastName, $Birthday, $Sex, $user, $pass)) {
         header('location:login.php');
     } else {
         echo 'Username already exists. Please choose a different username.';
